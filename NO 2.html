@@ -5,23 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Details</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .book {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
-    <h1>Book Collection</h1>
-    <div id="book-list"></div>
-
+    <h1>Open the console to view the book details</h1>
     <script>
-        // JSON data for books
-        const books = {
+        // JSON structure for books
+        const bookData = {
             "Books": [
                 {
                     "title": "The Great Gatsby",
@@ -38,32 +27,18 @@
             ]
         };
 
-        // Parse and display the book data using jQuery
-        $(document).ready(function () {
-            // a) Display the title of the first book
-            const firstBookTitle = books.Books[0].title;
+        // (a) Display the title of the first book
+        console.log("Title of the first book:", bookData.Books[0].title);
 
-            // b) Display the author of the second book
-            const secondBookAuthor = books.Books[1].author;
+        // (b) Display the author of the second book
+        console.log("Author of the second book:", bookData.Books[1].author);
 
-            // c) Display the genres of all books
-            let genresList = "<ul>";
-            books.Books.forEach(book => {
-                genresList += `<li>${book.genres.join(", ")}</li>`;
-            });
-            genresList += "</ul>";
-
-            // Append the data dynamically to the webpage
-            $("#book-list").append(`
-                <div class="book">
-                    <h2>Details</h2>
-                    <p><strong>Title of the First Book:</strong> ${firstBookTitle}</p>
-                    <p><strong>Author of the Second Book:</strong> ${secondBookAuthor}</p>
-                    <p><strong>Genres of All Books:</strong></p>
-                    ${genresList}
-                </div>
-            `);
+        // (c) Display the genres of all books
+        console.log("Genres of all books:");
+        bookData.Books.forEach((book, index) => {
+            console.log(`Book ${index + 1}: ${book.genres.join(", ")}`);
         });
     </script>
 </body>
 </html>
+
