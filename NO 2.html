@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .book {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Collection</h1>
+    <div id="book-list"></div>
+
+    <script>
+        // JSON data for books
+        const books = {
+            "Books": [
+                {
+                    "title": "The Great Gatsby",
+                    "author": "F. Scott Fitzgerald",
+                    "publicationYear": 1925,
+                    "genres": ["Fiction", "Classics"]
+                },
+                {
+                    "title": "To Kill a Mockingbird",
+                    "author": "Harper Lee",
+                    "publicationYear": 1960,
+                    "genres": ["Fiction", "Coming-of-Age"]
+                }
+            ]
+        };
+
+        // Parse and display the book data using jQuery
+        $(document).ready(function () {
+            // a) Display the title of the first book
+            const firstBookTitle = books.Books[0].title;
+
+            // b) Display the author of the second book
+            const secondBookAuthor = books.Books[1].author;
+
+            // c) Display the genres of all books
+            let genresList = "<ul>";
+            books.Books.forEach(book => {
+                genresList += `<li>${book.genres.join(", ")}</li>`;
+            });
+            genresList += "</ul>";
+
+            // Append the data dynamically to the webpage
+            $("#book-list").append(`
+                <div class="book">
+                    <h2>Details</h2>
+                    <p><strong>Title of the First Book:</strong> ${firstBookTitle}</p>
+                    <p><strong>Author of the Second Book:</strong> ${secondBookAuthor}</p>
+                    <p><strong>Genres of All Books:</strong></p>
+                    ${genresList}
+                </div>
+            `);
+        });
+    </script>
+</body>
+</html>
